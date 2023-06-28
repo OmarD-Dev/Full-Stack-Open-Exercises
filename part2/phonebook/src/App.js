@@ -73,13 +73,13 @@ const App = () => {
         })
         .catch((error) => {
           setMessage({
-            text: ` ${newName} was not added`,
+            text: ` ${error.response.data.error}`,
             type: "error",
           });
           setTimeout(() => {
             setMessage(null);
           }, 5000);
-          console.log(error);
+          console.log(error.response.data.error);
         });
     }
   };
@@ -97,7 +97,7 @@ const App = () => {
         .catch((error) => {
           setPersons(persons.filter((person) => person.id !== id));
           setMessage({
-            text: `Information of ${name} was not found`,
+            text: `Information of ${name} was already deleted from server`,
             type: "error",
           });
           setTimeout(() => {
